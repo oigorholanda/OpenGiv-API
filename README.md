@@ -1,2 +1,2 @@
 # OpenGiv-API
-Decentralized crowdfunding platform
+Decentralized Crowdfunding Platform
