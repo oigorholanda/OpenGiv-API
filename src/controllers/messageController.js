@@ -1,12 +1,12 @@
-import { create } from "../repositories/message.repositories.js";
+import messageRepositories from "../repositories/messageRepositories.js";
 
 async function postMessage(req, res) {
     const {name, text} = req.body
     try {
-        const msg = await create(name, text);
+        const msg = await messageRepositories.create(name, text);
         return res.status(201).json(msg);
     } catch (error) {
-        
+        return res.status(500).send(`Erro no bando de dados ${error}`)
     }
 }
 async function getMessage(req, res) {

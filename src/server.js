@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import messageRouter from "./routes/messages.routes.js";
 dotenv.config();
 
 //servidor
@@ -9,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // rotas
-//app.use([]);
+app.use([messageRouter]);
 
 
 // porta e listen
