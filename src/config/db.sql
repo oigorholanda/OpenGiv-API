@@ -9,6 +9,15 @@ CREATE TABLE users (
   updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
+-- criação da tabela de categorias
+CREATE TABLE categories (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  description TEXT,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+);
+
 CREATE TABLE items (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -31,15 +40,6 @@ CREATE TABLE donations (
     status TEXT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (receiver_id) REFERENCES users(id),
-);
-
--- criação da tabela de categorias
-CREATE TABLE categories (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  description TEXT,
-  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-  updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
 );
 
 -- criação da tabela de endereços
