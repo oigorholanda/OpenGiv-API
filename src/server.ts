@@ -12,7 +12,6 @@ server.use(express.json());
 // rotas
 server.use('/message', messageRouter);
 
-
 // porta e listen
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => console.log(`Server runnig on port: ${PORT}`));

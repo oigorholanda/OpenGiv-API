@@ -1,7 +1,8 @@
 import messageRepositories from "../repositories/messageRepositories.js";
+import { Request, Response } from "express";
 
-async function postMessage(req, res) {
-    const {name, text} = req.body
+async function postMessage(req: Request, res: Response) {
+    const { name, text } = req.body 
     try {
         const msg = await messageRepositories.create(name, text);
         return res.status(201).json(msg);
@@ -9,7 +10,7 @@ async function postMessage(req, res) {
         return res.status(500).send(`Erro no bando de dados ${error}`)
     }
 }
-async function getMessages(req, res) {
+async function getMessages(req: Request, res: Response) {
     try {
         const msg = await messageRepositories.list();
         console.log(msg);
@@ -18,14 +19,15 @@ async function getMessages(req, res) {
         return res.status(500).send(`Erro no bando de dados ${error}`) 
     }
 }
-async function updateMessage(req, res) {
+async function updateMessage(req: Request, res: Response) {
+    const { id } = req.query
     try {
         
     } catch (error) {
-        
+        return res.status(500).send(`Erro no bando de dados ${error}`)  
     }
 }
-async function deleteMessage(req, res) {
+async function deleteMessage(req: Request, res: Response) {
     try {
         
     } catch (error) {
