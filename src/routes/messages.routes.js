@@ -3,9 +3,9 @@ import messageController from "../controllers/messageController.js";
 
 const messageRouter = Router();
 
-messageRouter.post("/message", messageController.postMessage)
-messageRouter.get("/message", messageController.getMessage)
-messageRouter.put("/message", messageController.updateMessage)
-messageRouter.delete("/message", messageController.deleteMessage)
+messageRouter.post("/", messageController.postMessage);
+messageRouter.get("/", messageController.getMessages);
+messageRouter.put("/", messageController.updateMessage);
+messageRouter.delete("/", messageController.deleteMessage);
 
-export default messageRouter
+export default messageRouter;

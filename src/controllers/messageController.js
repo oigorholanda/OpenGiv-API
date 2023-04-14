@@ -9,11 +9,13 @@ async function postMessage(req, res) {
         return res.status(500).send(`Erro no bando de dados ${error}`)
     }
 }
-async function getMessage(req, res) {
+async function getMessages(req, res) {
     try {
-        
+        const msg = await messageRepositories.list();
+        console.log(msg);
+        return res.status(200).send(msg); 
     } catch (error) {
-        
+        return res.status(500).send(`Erro no bando de dados ${error}`) 
     }
 }
 async function updateMessage(req, res) {
@@ -31,4 +33,4 @@ async function deleteMessage(req, res) {
     }
 }
 
-export default {postMessage, getMessage, updateMessage, deleteMessage}
+export default {postMessage, getMessages, updateMessage, deleteMessage}

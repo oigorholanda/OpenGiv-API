@@ -10,4 +10,12 @@ async function create (name, text) {
     return data.rows[0];
 }
 
-export default {create}
+async function list () {
+    const data = await db.query(`
+    SELECT * FROM messages`
+    );
+
+    return data.rows
+}
+
+export default {create, list}
