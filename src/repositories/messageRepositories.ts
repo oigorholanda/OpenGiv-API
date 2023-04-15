@@ -1,6 +1,6 @@
 import { db } from "../config/database.js";
 
-async function create (name, text) {
+async function create ( name: string, text: string ){
     const data = await db.query(`
     INSERT INTO messages (name, message)
     VALUES ($1, $2) RETURNING *`,
