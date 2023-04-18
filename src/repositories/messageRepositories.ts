@@ -1,3 +1,4 @@
+import { QueryResult } from "pg";
 import { db } from "../config/database.js";
 import { message } from "../protocols/messages.js";
 
@@ -11,13 +12,13 @@ async function create ( message: message ){
     return data.rows[0];
 }
 
-async function listAll () {
+async function listAll (): Promise<QueryResult<message>> {
     const data = await db.query(`
     SELECT * FROM messages`
     );
     console.log(data.rows);
     
-    return data.rows
+    return data
 }
 
 export default {create, listAll}

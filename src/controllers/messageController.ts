@@ -6,8 +6,8 @@ import { Request, Response } from "express";
 async function getMessages(req: Request, res: Response) {
     try {
         const msg = await messageRepositories.listAll();
-        //console.log(msg);
-        return res.status(200).send(msg); 
+        
+        return res.status(200).send(msg.rows); 
     } catch (error) {
         return res.status(500).send(`Erro no bando de dados ${error}`) 
     }
