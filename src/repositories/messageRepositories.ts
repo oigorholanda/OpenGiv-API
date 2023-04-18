@@ -1,21 +1,23 @@
 import { db } from "../config/database.js";
+import { message } from "../protocols/messages.js";
 
-async function create ( name: string, text: string ){
+async function create ( message: message ){
     const data = await db.query(`
     INSERT INTO messages (name, message)
     VALUES ($1, $2) RETURNING *`,
-    [name, text]
+    [message.name, message.text]
     );
 
     return data.rows[0];
 }
 
-async function list () {
+async function listAll () {
     const data = await db.query(`
     SELECT * FROM messages`
     );
-
+    console.log(data.rows);
+    
     return data.rows
 }
 
-export default {create, list}
+export default {create, listAll}

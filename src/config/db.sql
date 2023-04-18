@@ -15,7 +15,7 @@ CREATE TABLE categories (
   name VARCHAR(255) NOT NULL,
   description TEXT,
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-  updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 CREATE TABLE items (
@@ -23,7 +23,7 @@ CREATE TABLE items (
     name VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
     image_url VARCHAR(255) NOT NULL,
-    category_id VARCHAR(255) NOT NULL,
+    category_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
@@ -36,10 +36,10 @@ CREATE TABLE donations (
     id SERIAL PRIMARY KEY,
     item_id INTEGER NOT NULL,
     receiver_id INTEGER NOT NULL,
-    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     status TEXT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (receiver_id) REFERENCES users(id),
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    FOREIGN KEY (item_id) REFERENCES items(id),
+    FOREIGN KEY (receiver_id) REFERENCES users(id)
 );
 
 -- criação da tabela de endereços

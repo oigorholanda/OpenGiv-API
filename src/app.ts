@@ -3,6 +3,7 @@ import "express-async-errors";
 import dotenv from "dotenv";
 import cors from "cors";
 import messageRouter from "./routes/messages.routes.js";
+import donationsRouter from "./routes/donations.routes.js";
 dotenv.config();
 
 //servidor
@@ -12,6 +13,7 @@ app.use(express.json());
 
 // rotas
 app.use('/message', messageRouter);
+app.use(donationsRouter)
 
 // porta e listen
 const PORT = process.env.PORT || 5000;

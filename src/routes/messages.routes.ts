@@ -6,6 +6,6 @@ const messageRouter = Router();
 messageRouter.post("/", messageController.postMessage);
 messageRouter.get("/", messageController.getMessages);
 messageRouter.put("/", messageController.updateMessage);
-messageRouter.delete("/", messageController.deleteMessage);
+messageRouter.delete("/:id", messageController.deleteMessage);
 
 export default messageRouter;
