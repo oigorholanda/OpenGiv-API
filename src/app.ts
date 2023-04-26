@@ -2,7 +2,7 @@ import express from "express";
 import "express-async-errors";
 import dotenv from "dotenv";
 import cors from "cors";
-import messageRouter from "./routes/messages.routes.js";
+import categoryRouter from "./routes/categories.routes.js";
 import donationsRouter from "./routes/donations.routes.js";
 dotenv.config();
 
@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 // rotas
-app.use('/message', messageRouter);
+app.use('/message', categoryRouter);
 app.use(donationsRouter)
 
 // porta e listen

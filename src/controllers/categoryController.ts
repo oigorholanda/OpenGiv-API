@@ -1,22 +1,22 @@
-import { message } from "../protocols/messages.js";
-import messageRepositories from "../repositories/messageRepositories.js";
+import { category } from "../protocols/category.js";
+import categoryRepositories from "../repositories/categoryRepositories.js";
 import { Request, Response } from "express";
 
 
 async function getMessages(req: Request, res: Response) {
     try {
-        const msg = await messageRepositories.listAll();
+        const msg = await categoryRepositories.listAll();
         
-        return res.status(200).send(msg.rows); 
+        return res.status(200).send(msg); 
     } catch (error) {
         return res.status(500).send(`Erro no bando de dados ${error}`) 
     }
 }
 
 async function postMessage(req: Request, res: Response) {
-    const message = req.body as message 
+    const message = req.body as category 
     try {
-        const msg = messageRepositories.create(message);
+        const msg = categoryRepositories.upsert(message);
         return res.status(201).json(msg);
     } catch (error) {
         return res.status(500).send(`Erro no bando de dados ${error}`)
