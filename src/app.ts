@@ -12,6 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 // rotas
+app.use('/health', (_req, res) => { res.send("OK!") })
 app.use('/message', categoryRouter);
 app.use(donationsRouter)
 
